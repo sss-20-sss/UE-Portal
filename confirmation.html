@@ -100,7 +100,8 @@
             </div>
             <div class="btn-container">
                 <button type="button" class="btn btn-danger">Go Back</button>
-                <button type="submit" class="btn btn-primary">Next</button>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='submit.html'">Next</button>
+
             </div>
         </form>
     </main>
@@ -139,15 +140,15 @@
             });
 
             submitButton.addEventListener('click', function () {
-                if (Object.values(formData).some(value => !value || value.trim() === '')) {
-                    alert('Please ensure all form fields are filled out correctly before submitting.');
-                    return;
-                }
+				if (Object.values(formData).some(value => !value || value.trim() === '')) {
+					alert('Please ensure all form fields are filled out correctly before submitting.');
+					return;
+			}
 
-                alert('Your application has been successfully submitted!');
-                localStorage.removeItem('applicationFormData'); 
-                window.location.href = 'thank-you.html';
-            });
+				alert('Your application has been successfully submitted!');
+				localStorage.removeItem('applicationFormData');
+				window.location.href = 'submit.html'; // Redirect to submit.html
+			});
         });
     </script>
 </body>
