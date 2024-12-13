@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Page - UE Online Admission</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #660000;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #660000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header img {
+            max-height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .tabs {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #ddd;
+            padding: 10px 0;
+        }
+        .tabs a {
+            color: #660000;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .tabs a.active, .tabs a:hover {
+            background-color: #660000;
+            color: white;
+        }
+        .content {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-container button {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="ue-logo.png" alt="UE Logo">
+        <h1>University of the East</h1>
+        <h2>Online Application for Admission</h2>
+    </header>
+
+    <nav class="tabs text-center">
+        <a href="index.html">Welcome</a>
+        <a href="applicant.html" class="active">Applicant</a>
+        <a href="contact-info.html">Contact Info</a>
+        <a href="previous-school.html">Previous School</a>
+        <a href="confirmation.html">Confirmation</a>
+        <a href="submit.html">Submit</a>
+    </nav>
+
+    <main class="content">
+        <h3>Applicant Information</h3>
+        <form id="applicantForm">
+            <div class="form-group">
+                <label for="surname">Surname (Last Name) *</label>
+                <input type="text" class="form-control" id="surname" placeholder="Ex. DELA CRUZ">
+            </div>
+            <div class="form-group">
+                <label for="givenName">Complete Given Name *</label>
+                <input type="text" class="form-control" id="givenName" placeholder="Ex. JUAN JR">
+            </div>
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" class="form-control" id="middleName">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <select class="form-control" id="dobMonth">
+                            <option value="">Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="dobDay">
+                            <option value="">Day</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="dobYear">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="citizenship">Citizenship *</label>
+                <input type="text" class="form-control" id="citizenship">
+            </div>
+            <div class="form-group">
+                <label for="gender">Sex/Gender *</label>
+                <select class="form-control" id="gender">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="civilStatus">Civil Status</label>
+                <select class="form-control" id="civilStatus">
+                    <option value="">Select</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="religion">Religion</label>
+                <input type="text" class="form-control" id="religion">
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester *</label>
+                <select class="form-control" id="semester">
+                    <option value="">Select</option>
+                    <option value="1">1st Semester</option>
+                    <option value="2">2nd Semester</option>
+                    <option value="3">Summer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="admissionType">Seeking Admission As *</label>
+                <select class="form-control" id="admissionType">
+                    <option value="">Select</option>
+                    <option value="New Student">New Student</option>
+                    <option value="Transferee">Transferee</option>
+                    <option value="Cross Enrollee">Cross Enrollee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="strand">Senior High School Strand</label>
+                <input type="text" class="form-control" id="strand">
+            </div>
+            <div class="form-group">
+                <label for="course">Course / Degree Program *</label>
+                <input type="text" class="form-control" id="course">
+            </div>
+            <div class="form-group">
+                <label for="campus">Campus *</label>
+                <input type="text" class="form-control" id="campus">
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-danger" id="cancelBtn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+            </div>
+        </form>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dayDropdown = document.getElementById('dobDay');
+            const yearDropdown = document.getElementById('dobYear');
+            const monthDropdown = document.getElementById('dobMonth');
+            const currentYear = new Date().getFullYear();
+    
+            // Populate Year dropdown (Current year to 1900)
+            for (let i = currentYear; i >= 1900; i--) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                yearDropdown.appendChild(option);
+            }
+    
+            // Function to populate the days based on the selected month and year
+            const populateDays = (month, year) => {
+                dayDropdown.innerHTML = '<option value="">Day</option>'; // Reset the day dropdown
+                let daysInMonth = 31;
+    
+                // Days in each month
+                if (month === 2) { // February
+                    daysInMonth = (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) ? 29 : 28; // Leap year check
+                } else if ([4, 6, 9, 11].includes(month)) { // April, June, September, November
+                    daysInMonth = 30;
+                }
+    
+                // Populate the day dropdown based on daysInMonth
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    dayDropdown.appendChild(option);
+                }
+            };
+    
+            // Event listener for the month and year dropdowns
+            monthDropdown.addEventListener('change', function () {
+                const month = parseInt(monthDropdown.value);
+                const year = parseInt(yearDropdown.value);
+                if (month && year) {
+                    populateDays(month, year);
+                }
+            });
+    
+            yearDropdown.addEventListener('change', function () {
+                const month = parseInt(monthDropdown.value);
+                const year = parseInt(yearDropdown.value);
+                if (month && year) {
+                    populateDays(month, year);
+                }
+            });
+    
+            const cancelButton = document.getElementById('cancelBtn');
+            cancelButton.addEventListener('click', function() {
+                window.location.href = "index.html"; // Redirect to the welcome page
+            });
+    
+            const nextButton = document.getElementById('nextBtn');
+            nextButton.addEventListener('click', function() {
+                const form = document.getElementById('applicantForm');
+                let formValid = true;
+    
+                // Validate required fields manually, since some fields don't have the "required" attribute
+                const requiredFields = form.querySelectorAll('input[required], select[required]');
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        formValid = false;
+                        field.classList.add('is-invalid');
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+    
+                if (formValid) {
+                    // Store form data in localStorage for transition
+                    localStorage.setItem('applicantData', JSON.stringify({
+                        surname: document.getElementById('surname').value,
+                        givenName: document.getElementById('givenName').value,
+                        middleName: document.getElementById('middleName').value,
+                        dobMonth: monthDropdown.value,
+                        dobDay: dayDropdown.value,
+                        dobYear: yearDropdown.value,
+                        citizenship: document.getElementById('citizenship').value,
+                        gender: document.getElementById('gender').value,
+                        civilStatus: document.getElementById('civilStatus').value,
+                        religion: document.getElementById('religion').value,
+                        semester: document.getElementById('semester').value,
+                        admissionType: document.getElementById('admissionType').value,
+                        strand: document.getElementById('strand').value,
+                        course: document.getElementById('course').value,
+                        campus: document.getElementById('campus').value
+                    }));
+                    // Proceed to next page
+                    window.location.href = "contact-info.html";
+                } else {
+                    alert("Please fill in all required fields.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!-- CHACYON, DIRK -->
+<!-- BARIS, SHERWIN -->
+<!-- CCS 4307 -->
+<!-- CSAG -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous School</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #660000;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #660000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header img {
+            max-height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .tabs {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #ddd;
+            padding: 10px 0;
+        }
+        .tabs a {
+            color: #660000;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .tabs a.active, .tabs a:hover {
+            background-color: #660000;
+            color: white;
+        }
+        .content {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn-container button {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="ue-logo.png" alt="UE Logo">
+        <h1>University of the East</h1>
+        <h2>Online Application for Admission</h2>
+    </header>
+
+    <nav class="tabs text-center">
+        <a href="index.html">Welcome</a>
+        <a href="applicant.html">Applicant</a>
+        <a href="contact-info.html">Contact Info</a>
+        <a href="previous-school.html" class="active">Previous School</a>
+        <a href="confirmation.html">Confirmation</a>
+        <a href="submit.html">Submit</a>
+    </nav>
+
+    <main class="content">
+        <h3>Previous School Information</h3>
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Are you a Grade 12 graduate or expecting to graduate?</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="grade12" id="grade12-yes" value="yes">
+                        <label class="form-check-label" for="grade12-yes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="grade12" id="grade12-no" value="no">
+                        <label class="form-check-label" for="grade12-no">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="last-school" class="form-label">Last School Attended</label>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-danger">University of the East - Manila</button>
+                    <button type="button" class="btn btn-success">University of the East - Caloocan</button>
+                    <button type="button" class="btn btn-secondary">Others</button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="school-address" class="form-label">School Address</label>
+                <input type="text" class="form-control" id="school-address">
+            </div>
+            <div class="mb-3">
+                <label for="school-type" class="form-label">Type of School</label>
+                <select class="form-select" id="school-type">
+                    <option selected disabled>Please select...</option>
+                    <option>Public</option>
+                    <option>Private</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="school-code" class="form-label">School Code</label>
+                <input type="text" class="form-control" id="school-code">
+            </div>
+            <div class="mb-3">
+                <label for="year-graduated" class="form-label">Year Graduated / will Graduate</label>
+                <input type="text" class="form-control" id="year-graduated">
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-danger">Go Back</button>
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const requiredFields = ['school-address', 'school-type', 'year-graduated'];
+    const cancelButton = document.querySelector('.btn.btn-danger');
+    const nextButton = document.querySelector('.btn.btn-primary');
+
+    const formData = JSON.parse(localStorage.getItem('applicationFormData')) || {};
+
+    const loadFormData = () => {
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (formData[fieldId] && field) {
+                field.value = formData[fieldId];
+            }
+        });
+    };
+
+    loadFormData();
+
+    const saveFormData = () => {
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                formData[fieldId] = field.value.trim();
+            }
+        });
+        localStorage.setItem('applicationFormData', JSON.stringify(formData));
+    };
+
+    cancelButton.addEventListener('click', function () {
+        if (confirm('Are you sure you want to cancel? All data will be lost.')) {
+            localStorage.removeItem('applicationFormData');
+            form.reset();
+            window.location.href = 'welcome.html';
+        }
+    });
+
+    nextButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        let isValid = true;
+
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field || !field.value.trim() || field.value === "Please select...") {
+                isValid = false;
+                field.classList.add('is-invalid');
+            } else {
+                field.classList.remove('is-invalid');
+            }
+        });
+
+        const grade12Yes = document.getElementById('grade12-yes');
+        const grade12No = document.getElementById('grade12-no');
+        if (!grade12Yes.checked && !grade12No.checked) {
+            isValid = false;
+            alert('Please select if you are a Grade 12 graduate.');
+        }
+
+        if (isValid) {
+            saveFormData();
+            window.location.href = 'confirmation.html'; 
+        } else {
+            alert('Please fill in all required fields correctly before proceeding.');
+        }
+    });
+
+    form.addEventListener('input', function (event) {
+        if (event.target.classList.contains('is-invalid')) {
+            event.target.classList.remove('is-invalid');
+        }
+    });
+});
+    </script>
+</body>
+</html>
